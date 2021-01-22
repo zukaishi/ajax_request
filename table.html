@@ -90,16 +90,20 @@
         <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
         <thead>
         <tr>
-            <th>request url </th>
-            <th>method</th>
+            <th>Id</th>
+            <th>Request url </th>
+            <th>Method</th>
+            <th>Data</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="center">http://google.com</td>
-                <td class="center">get</td>
+            <tr v-for="row in request_list">
+                <td class="center">{{row.id}}</td>
+                <td class="center">{{row.url}}</td>
+                <td class="center">{{row.method}}</td>
+                <td class="center">{{row.data}}</td>
                 <td class="center">
                     <span class="label-success label label-default">success</span>
                 </td>
@@ -109,10 +113,7 @@
                         Request
                     </a>
                 </td>
-            </tr>
-        
-
-
+            </tr>                
         </tbody>
         </table>
         </div>
@@ -127,8 +128,13 @@
 <script>
     var app = new Vue({ 
     el: '#app',
-    data: {
-    },
+        data: {
+            request_list: [
+                { id: 1, url: 'http://google.co.jp', method: 'get', data:'' },
+                { id: 2, url: 'http://hogehoge.com', method: 'get', data:'' },
+                { id: 3, url: 'http://fugafuga.com', method: 'post', data:'aaa:bbb,ccc:ddd' },
+            ]
+        },
     methods:{
     },
     mounted () {
