@@ -77,7 +77,7 @@
                             <span class="label-success label label-default">success</span>
                         </td>
                         <td class="center">
-                            <a class="btn btn-danger" v-on:click ="singleRequet()">
+                            <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
                                 <i class="glyphicon glyphicon-share-alt icon-white"></i>
                                 Request
                             </a>
@@ -102,11 +102,11 @@
                 ]
             },
         methods:{
-            allRequest: function (e) {
-                console.log("all request")
+            allRequest: function () {
+                alert("all request");
             },
-            singleRequet: function(e) {
-                console.log("single request")
+            singleRequet: function(id) {
+                alert(id);
             }
 
         },
