@@ -45,48 +45,49 @@
     <div class="ch-container">
         <div id="app">
             <div class="row">
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-share-alt icon-white"></i>
-                All Request
-            </a>        
-            <div class="box col-md-12">
-            <div class="box-inner">
-            <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-user"></i>Ajax Request</h2>
-            </div>
-            <div class="box-content">
-            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Request url</th>
-                    <th>Method</th>
-                    <th>Data</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="row in request_list">
-                    <td class="center">{{row.id}}</td>
-                    <td class="center">{{row.url}}</td>
-                    <td class="center">{{row.method}}</td>
-                    <td class="center">{{row.data}}</td>
-                    <td class="center">
-                        <span class="label-success label label-default">success</span>
-                    </td>
-                    <td class="center">
-                        <a class="btn btn-danger" href="#">
-                            <i class="glyphicon glyphicon-share-alt icon-white"></i>
-                            Request
-                        </a>
-                    </td>
-                </tr>                
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
+                <a class="btn btn-danger" v-on:click ="allRequest()">
+                    <i class="glyphicon glyphicon-share-alt icon-white"></i>
+                    All Request
+                </a>
+
+                <div class="box col-md-12">
+                <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-user"></i>Ajax Request</h2>
+                </div>
+                <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Request url</th>
+                        <th>Method</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="row in request_list">
+                        <td class="center">{{row.id}}</td>
+                        <td class="center">{{row.url}}</td>
+                        <td class="center">{{row.method}}</td>
+                        <td class="center">{{row.data}}</td>
+                        <td class="center">
+                            <span class="label-success label label-default">success</span>
+                        </td>
+                        <td class="center">
+                            <a class="btn btn-danger" v-on:click ="singleRequet()">
+                                <i class="glyphicon glyphicon-share-alt icon-white"></i>
+                                Request
+                            </a>
+                        </td>
+                    </tr>                
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -101,10 +102,16 @@
                 ]
             },
         methods:{
+            allRequest: function (e) {
+                console.log("all request")
+            },
+            singleRequet: function(e) {
+                console.log("single request")
+            }
 
         },
         mounted () {
-            console.log("test")
+            console.log("test2")
         }
     });
     </script>
