@@ -94,21 +94,30 @@
     <script>
         var app = new Vue({ 
         el: '#app',
-            data: {
-                request_list: [
-                    { id: 1, url: 'http://google.co.jp', method: 'get', data:'' },
-                    { id: 2, url: 'http://hogehoge.com', method: 'get', data:'' },
-                    { id: 3, url: 'http://fugafuga.com', method: 'post', data:'aaa:bbb,ccc:ddd' },
-                ]
-            },
+        data: {
+            request_list: [
+                { id: 1, url: 'http://google.co.jp', method: 'get', data:'' },
+                { id: 2, url: 'http://hogehoge.com', method: 'get', data:'' },
+                { id: 3, url: 'http://fugafuga.com', method: 'post', data:'aaa:bbb,ccc:ddd' },
+            ]
+        },
         methods:{
             allRequest: function () {
-                alert("all request");
+                alert("all request start");
+                for (let i = 0; i < this.request_list.length; i++) {
+                    console.log( this.request_list[i].url );
+                }
+                alert("all request end");
             },
             singleRequet: function(id) {
-                alert(id);
+                alert("all request start");
+                for (let i = 0; i < this.request_list.length; i++) {
+                    if( this.request_list[i].id == id  ) {
+                        console.log( this.request_list[i].url );
+                    }
+                }
+                alert("all request end");
             }
-
         },
         mounted () {
             console.log("test2")
