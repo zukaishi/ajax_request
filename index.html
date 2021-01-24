@@ -41,7 +41,7 @@
                     <th>Request url</th>
                     <th>Data</th>
                     <th>Method</th>
-                    <th>Status</th>
+                    <th>Result</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -58,6 +58,8 @@
                         <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
                         <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
                         <span v-if="row.status === 'pending'" class="label-warning label label-default">Pending</span>
+                        <br>
+                        {{row.error}}
                     </td>
                     <td>
                         <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
@@ -73,18 +75,18 @@
         el: '#app',
         data: {
             request_list: [
-                { id: 1, url: 'http://google.co.jp', method: 'GET', data:'',status:'pending' },
-                { id: 2, url: 'http://hogehoge.com', method: 'GET', data:'',status:'pending'  },
-                { id: 3, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 4, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 5, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 6, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 7, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 8, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 9, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 10, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 11, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
-                { id: 12, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 1, url: 'http://google.co.jp', method: 'GET', data:'',status:'pending',error:'' },
+                { id: 2, url: 'http://hogehoge.com', method: 'GET', data:'',status:'pending',error:''  },
+                { id: 3, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 4, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 5, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 6, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 7, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 8, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 9, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 10, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 11, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
+                { id: 12, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending',error:'' },
             ]
         },
         methods:{
@@ -97,8 +99,13 @@
             singleRequet: function(id) {
                 for (let i = 0; i < this.request_list.length; i++) {
                     if( this.request_list[i].id == id  ) {
-                        console.log( this.request_list[i].url );
-                        this.request_list[i].status = "success"
+                        axios.get(this.request_list[i].url)
+                        .then((response) => {
+                            this.request_list[i].status = "success"
+                        }).catch(err => {
+                            this.request_list[i].status = "failure"
+                            this.request_list[i].error = err
+                        });
                     }
                 }
             }
