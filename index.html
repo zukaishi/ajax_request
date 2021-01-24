@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    <!-- topbar starts -->
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-inner">
             <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/><span>ajax test</span></a>
@@ -57,38 +56,38 @@
                 </div>
                 <div class="box-content">
                 <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Request url</th>
-                        <th>Data</th>
-                        <th>Method</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="row in request_list">
-                        <td class="center">{{row.id}}</td>
-                        <td class="center">{{row.url}}</td>
-                        <td class="center">{{row.data}}</td>
-                        <td class="center">
-                            <span v-if="row.method === 'GET'" class="label-default label label-danger">GET</span>
-                            <span v-if="row.method === 'POST'" class="label-default label">POST</span>
-                        </td>
-                        <td class="center">
-                            <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
-                            <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
-                            <span v-if="row.status === 'pending'" class="label-warning label label-default">Pending</span>
-                        </td>
-                        <td class="center">
-                            <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
-                                <i class="glyphicon glyphicon-share-alt icon-white"></i>
-                                Request
-                            </a>
-                        </td>
-                    </tr>                
-                </tbody>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Request url</th>
+                            <th>Data</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="row in request_list">
+                            <td class="center">{{row.id}}</td>
+                            <td class="center">{{row.url}}</td>
+                            <td class="center">{{row.data}}</td>
+                            <td class="center">
+                                <span v-if="row.method === 'GET'" class="label-default label label-danger">GET</span>
+                                <span v-if="row.method === 'POST'" class="label-default label">POST</span>
+                            </td>
+                            <td class="center">
+                                <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
+                                <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
+                                <span v-if="row.status === 'pending'" class="label-warning label label-default">Pending</span>
+                            </td>
+                            <td class="center">
+                                <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
+                                    <i class="glyphicon glyphicon-share-alt icon-white"></i>
+                                    Request
+                                </a>
+                            </td>
+                        </tr>                
+                    </tbody>
                 </table>
                 </div>
                 </div>
@@ -130,9 +129,6 @@
                     }
                 }
             }
-        },
-        mounted () {
-            console.log("test2")
         }
     });
     </script>
