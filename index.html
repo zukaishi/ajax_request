@@ -41,59 +41,49 @@
             </div>
         </div>
     </div>
-    <div class="ch-container">
-        <div id="app">
-            <div class="row">
-                <a class="btn btn-danger" v-on:click ="allRequest()">
-                    <i class="glyphicon glyphicon-share-alt icon-white"></i>
-                    All Request
-                </a>
+    <div id="app">
+        <a class="btn btn-danger" v-on:click ="allRequest()">
+            <i class="glyphicon glyphicon-share-alt icon-white"></i>
+            All Request
+        </a>
 
-                <div class="box col-md-12">
-                <div class="box-inner">
-                <div class="box-header well" data-original-title="">
-                    <h2><i class="glyphicon glyphicon-user"></i>Ajax Request</h2>
-                </div>
-                <div class="box-content">
-                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Request url</th>
-                            <th>Data</th>
-                            <th>Method</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="row in request_list">
-                            <td class="center">{{row.id}}</td>
-                            <td class="center">{{row.url}}</td>
-                            <td class="center">{{row.data}}</td>
-                            <td class="center">
-                                <span v-if="row.method === 'GET'" class="label-default label label-danger">GET</span>
-                                <span v-if="row.method === 'POST'" class="label-default label">POST</span>
-                            </td>
-                            <td class="center">
-                                <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
-                                <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
-                                <span v-if="row.status === 'pending'" class="label-warning label label-default">Pending</span>
-                            </td>
-                            <td class="center">
-                                <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
-                                    <i class="glyphicon glyphicon-share-alt icon-white"></i>
-                                    Request
-                                </a>
-                            </td>
-                        </tr>                
-                    </tbody>
-                </table>
-                </div>
-                </div>
-                </div>
-            </div>
+        <div class="box-header well" data-original-title="">
+            <h2><i class="glyphicon glyphicon-user"></i>Ajax Request</h2>
         </div>
+        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Request url</th>
+                    <th>Data</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in request_list">
+                    <td class="center">{{row.id}}</td>
+                    <td class="center">{{row.url}}</td>
+                    <td class="center">{{row.data}}</td>
+                    <td class="center">
+                        <span v-if="row.method === 'GET'" class="label-default label label-danger">GET</span>
+                        <span v-if="row.method === 'POST'" class="label-default label">POST</span>
+                    </td>
+                    <td class="center">
+                        <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
+                        <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
+                        <span v-if="row.status === 'pending'" class="label-warning label label-default">Pending</span>
+                    </td>
+                    <td class="center">
+                        <a class="btn btn-danger" v-on:click ="singleRequet(row.id)">
+                            <i class="glyphicon glyphicon-share-alt icon-white"></i>
+                            Request
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script>
         var app = new Vue({ 
