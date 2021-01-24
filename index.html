@@ -61,8 +61,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Request url</th>
-                        <th>Method</th>
                         <th>Data</th>
+                        <th>Method</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -71,8 +71,11 @@
                     <tr v-for="row in request_list">
                         <td class="center">{{row.id}}</td>
                         <td class="center">{{row.url}}</td>
-                        <td class="center">{{row.method}}</td>
                         <td class="center">{{row.data}}</td>
+                        <td class="center">
+                            <span v-if="row.method === 'GET'" class="label-default label label-danger">GET</span>
+                            <span v-if="row.method === 'POST'" class="label-default label">POST</span>
+                        </td>
                         <td class="center">
                             <span v-if="row.status === 'success'" class="label-success label label-default">Success</span>
                             <span v-if="row.status === 'failure'" class="label-default label label-danger">Failure</span>
@@ -98,9 +101,18 @@
         el: '#app',
         data: {
             request_list: [
-                { id: 1, url: 'http://google.co.jp', method: 'get', data:'',status:'pending' },
-                { id: 2, url: 'http://hogehoge.com', method: 'get', data:'',status:'pending'  },
-                { id: 3, url: 'http://fugafuga.com', method: 'post', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 1, url: 'http://google.co.jp', method: 'GET', data:'',status:'pending' },
+                { id: 2, url: 'http://hogehoge.com', method: 'GET', data:'',status:'pending'  },
+                { id: 3, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 4, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 5, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 6, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 7, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 8, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 9, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 10, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 11, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
+                { id: 12, url: 'http://fugafuga.com', method: 'POST', data:'aaa:bbb,ccc:ddd',status:'pending' },
             ]
         },
         methods:{
